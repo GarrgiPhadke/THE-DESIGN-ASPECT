@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://cdn.tailwindcss.com/"></script>
+
+<title>Dropdown Image Selector</title>
+<style>
+  body {
+    background-color: #fce4ec; /* Pink background */
+    background-image:url('/static/hubbg2.jpg');
+    background-size: cover;
+  }
+    /* Placeholder style for the image */
+    #displayedImage {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 20px auto;
+    }
+
+    /* Style for the dropdowns */
+    select {
+        margin: 10px;
+        padding: 8px;
+        font-size: 16px;
+        width: 200px;
+    }
+
+    /* Style for the submit button */
+    #submitBtn {
+        margin: 10px auto 20px;
+        padding: 8px 16px;
+        font-size: 16px;
+        background-color: #4CAF50;
+        color: white; 
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        display: block;
+    }
+
+    /* Style for the output area */
+    #outputArea {
+        width: 300px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #f0f0f0;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        overflow: hidden;
+        position: relative;
+        transition: margin-top 0.5s ease;
+    }
+
+    /* Animation for the output area */
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    .fadeIn {
+        animation-name: fadeIn;
+        animation-duration: 1s;
+    }
+    .hubbutton {
+            background-color: #fff; /* Set background color to white */
+            color: #ff0000; /* Set font color to red */
+            border: 2px solid #ff0000; /* Set border to red */
+            padding: 12px 24px; /* Increased padding for better button appearance */
+            font-size: 18px; /* Increased font size */
+            font-weight: bold; /* Set font weight to bold */
+            cursor: pointer;
+            border-radius: 5px;
+            box-shadow: 0px 4px 6px rgba(212, 124, 124, 0.1);
+        }
+
+.hubbutton:hover {
+  background-color: #dfd7d7; /* Change background color on hover */
+}
+
+</style>
+</head>
+<body>
+  <header class="text-gray-600 body-font">
+    <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+      <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full" viewBox="0 0 24 24">
+        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+        
+          <img src="{% static 'h_tv/t9.jpg' %}">
+        </svg>
+        <span class="ml-3 text-xl">HomeScape</span>
+      </a>
+      <nav class="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
+        <a href="{% url 'hub' %}" class="mr-5 hover:text-pink-1000 text-black text-lg font-bold">Inspiration Hub</a>
+        <a href="{% url 'cal' %}" class="mr-5 hover:text-pink-1000 text-black text-lg font-bold">Budget Calculator</a>
+        <a href="{% url 'review' %}" class="mr-5 hover:text-pink-1000 text-black text-lg font-bold">Review</a>
+        <a href="" class="mr-5 hover:text-pink-1000 text-black text-lg font-bold">AboutUs</a>      
+      </nav>
+      <button class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">Contact us
+        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+          <path d="M5 12h14M12 5l7 7-7 7"></path>
+        </svg>
+      </button>
+    </div>
+  </header>
+    <form id="imageForm">
+        <select id="dropdownB">
+            <option value="">Select Color</option>
+            <option value="B1">White</option>
+            <option value="B2">Gray</option>
+            <option value="B3">Blue</option>
+            <option value="B4">Pink</option>
+            <option value="B5">Coral</option>
+        </select>
+
+        <select id="dropdownC">
+            <option value="">Select Finish</option>
+            <option value="C1">Matte</option>
+            <option value="C2">Wooden</option>
+            <option value="C3">Gloss</option> 
+        </select>
+        <button type="button" id="submitBtn">Submit</button>
+
+    </form>
+
+    <div id="outputArea" class="hidden">
+      <h2>Selected Image</h2>
+      <div class="image-container">
+          <img id="displayedImage" src="" alt="Displayed Image">
+          <button class="hubbutton"><a href="{% url 'contact' %}">Contact Consultant</a></button>
+      </div>
+  </div>
+    <section class="text-gray-600 body-font">
+        <div class="container px-5 py-5 mx-auto">
+          {% load static %}
+          <div class="flex flex-wrap -m-4">
+            <div class="lg:w-1/3 sm:w-1/2 p-4">
+              <div class="flex relative">
+                <img alt="gallery" class="absolute inset-0 w-full h-full object-cover object-cenr" src="{% static 'h_tv/t1.jpg' %}">
+                <div class="px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100">
+                    <button class="hubbutton"><a href="{% url 'contact' %}">Contact Consultant</a></button>
+                  <h1 class="title-font text-lg font-medium text-gray-900 mb-3">HomeScape</h1>
+                  <p class="leading-relaxed">Transform your living space with our expert interior design services. From furniture arrangement to color palettes, we'll help you create the perfect ambiance for your home.</p>
+                </div>
+              </div>
+            </div>
+            <div class="lg:w-1/3 sm:w-1/2 p-4">
+              <div class="flex relative">
+                <img alt="gallery" class="absolute inset-0 w-full h-full object-cover object-cenr" src="{% static 'h_tv/t9.jpg' %}">
+                <div class="px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100">
+                    <button class="hubbutton"><a href="{% url 'contact' %}">Contact Consultant</a></button>
+                  <h1 class="title-font text-lg font-medium text-gray-900 mb-3">HomeScape</h1>
+                  <p class="leading-relaxed">Transform your living space with our expert interior design services. From furniture arrangement to color palettes, we'll help you create the perfect ambiance for your home.</p>
+                </div>
+              </div>
+            </div>
+            <div class="lg:w-1/3 sm:w-1/2 p-4">
+              <div class="flex relative">
+                <img alt="gallery" class="absolute inset-0 w-full h-full object-cover object-cenr" src="{% static 'h_tv/t4.jpg' %}">
+                <div class="px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100">
+                    <button class="hubbutton"><a href="{% url 'contact' %}">Contact Consultant</a></button>
+                  <h1 class="title-font text-lg font-medium text-gray-900 mb-3">HomeScape</h1>
+                  <p class="leading-relaxed">Transform your living space with our expert interior design services. From furniture arrangement to color palettes, we'll help you create the perfect ambiance for your home.</p>
+                </div>
+              </div>
+            </div>
+            <div class="lg:w-1/3 sm:w-1/2 p-4">
+              <div class="flex relative">
+                <img alt="gallery" class="absolute inset-0 w-full h-full object-cover object-cenr" src="{% static 'h_tv/t7.jpg' %}">
+                <div class="px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100">
+                    <button class="hubbutton"><a href="{% url 'contact' %}">Contact Consultant</a></button>
+                  <h1 class="title-font text-lg font-medium text-gray-900 mb-3">HomeScape</h1>
+                  <p class="leading-relaxed">Transform your living space with our expert interior design services. From furniture arrangement to color palettes, we'll help you create the perfect ambiance for your home.</p>
+                </div>
+              </div>
+            </div>
+            <div class="lg:w-1/3 sm:w-1/2 p-4">
+              <div class="flex relative">
+                <img alt="gallery" class="absolute inset-0 w-full h-full object-cover object-cenr" src="{% static 'h_tv/t6.jpg' %}">
+                <div class="px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100">
+                    <button class="hubbutton"><a href="{% url 'contact' %}">Contact Consultant</a></button>
+                  <h1 class="title-font text-lg font-medium text-gray-900 mb-3">HomeScape</h1>
+                  <p class="leading-relaxed">Transform your living space with our expert interior design services. From furniture arrangement to color palettes, we'll help you create the perfect ambiance for your home.</p>
+                </div>
+              </div>     
+            </div>
+            <div class="lg:w-1/3 sm:w-1/2 p-4">
+              <div class="flex relative">
+                <img alt="gallery" class="absolute inset-0 w-full h-full object-cover object-cenr" src="{% static 'h_tv/t5.jpg' %}">
+                <div class="px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100">
+                    <button class="hubbutton"><a href="{% url 'contact' %}">Contact Consultant</a></button>
+                  <h1 class="title-font text-lg font-medium text-gray-900 mb-3">HomeScape</h1>
+                  <p class="leading-relaxed">Transform your living space with our expert interior design services. From furniture arrangement to color palettes, we'll help you create the perfect ambiance for your home.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <script>
+        // Mapping object to associate combinations with image paths
+        {% load static %}
+        const imageMappings = {
+            'B2C1': '{% static 'h_tv/t1.jpg' %}',
+            'B1C2': '{% static 'h_tv/t2.jpg' %}',                 
+            'B3C1': '{% static 'h_tv/t3.jpg' %}',
+            'B4C1': '{% static 'h_tv/t4.jpg' %}',
+            'B2C3': '{% static 'h_tv/t5.jpg' %}',
+            'B3C3': '{% static 'h_tv/t6.jpg' %}',
+            'B5C1': '{% static 'h_tv/t7.jpg' %}',
+            'B5C2': '{% static 'h_tv/t8.jpg' %}',      
+            'B1C3': '{% static 'h_tv/t9.jpg' %}',
+           
+            // Add more combinations as needed
+        };
+    
+        // Placeholder image path for when no combination is found
+        const placeholderImagePath = '{% static 'no_output.webp' %}';
+    
+        // Get references to the dropdowns, form, and the image element
+        const dropdowns = document.querySelectorAll('select');
+        const form = document.getElementById('imageForm');
+        const outputArea = document.getElementById('outputArea');
+        const displayedImage = document.getElementById('displayedImage');
+    
+        // Event listener for form submission
+        document.getElementById('submitBtn').addEventListener('click', function(event) {
+            event.preventDefault();
+            
+            // Check if any dropdown is left unselected
+            for (let i = 0; i < dropdowns.length; i++) {
+                if (dropdowns[i].value === "") {
+                    alert('Please select options from all dropdowns.');
+                    return;
+                }
+            }
+    
+            // Get the selected values from the dropdowns
+            const selectedValues = Array.from(dropdowns).map(dropdown => dropdown.value);
+            
+            // Concatenate selected values to form a combination key
+            const combinationKey = selectedValues.join('');
+            
+            // Check if combination exists in imageMappings
+            const imagePath = imageMappings[combinationKey];
+            
+            // If combination found, display the corresponding image
+            if (imagePath) {
+                displayedImage.src = imagePath;
+                outputArea.classList.remove('hidden');
+                outputArea.classList.add('fadeIn');
+            } else {
+                // If no combination found, display placeholder image
+                displayedImage.src = placeholderImagePath;
+                outputArea.classList.remove('hidden');
+                outputArea.classList.add('fadeIn');
+            }
+        });
+    </script>  
+</body>
+</html>

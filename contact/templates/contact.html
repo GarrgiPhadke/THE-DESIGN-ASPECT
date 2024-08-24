@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+     <style>body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color:white;
+      /*background-image:url('/static/Home.jpg'); Replace 'your-image.jpg' with the path to your image */
+      background-size: cover; /* Cover the entire viewport */
+      background-repeat: no-repeat; /* Prevent the background image from repeating */
+      background-position: center; /* Center the background image */
+     }
+  
+  .whatsapp-icon {
+    width: 35px; /* Set the desired width of the icon */
+    height: 35px; /* Set the desired height of the icon */
+    background: url('https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg') no-repeat center center;
+    background-size: contain;
+    display: inline-block;
+}
+.call-link {
+  text-decoration: none;
+  color: #007BFF;
+  font-size: 15px;
+  font-family: Arial, sans-serif;
+}
+.call-icon {
+  width: 40px; /* Increase the width of the image */
+  height: 40px; /* Increase the height of the image */
+  vertical-align: middle; /* Align the icon vertically in the middle */
+  margin-right: 8px; /* Add some space to the right of the icon */
+  border-radius: 50%; /* Make the icon round */
+  padding: 4px; /* Optional: Add some padding inside the icon */
+}
+. {
+  font-size: 1px; /* Adjust this value to your preferred size */
+}
+#menu-mobile.custom-size {  /* The container of menu list */
+  width: 80%; /* Custom width */
+  max-width: 500px; /* Custom max width */
+  height: auto; /* Custom height based on content */
+  max-height: 50vh; /* Custom max height */
+}
+</style>
+    <title>Project</title>
+</head>
+<body>
+  <header class="text-gray-600 body-font">
+    <div class="container mx-auto flex flex-wrap p-5 items-center justify-between">
+      <!-- Logo and Home link -->
+      {% load static %}
+      <a href="{% url 'index' %}" class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+        <img src="{% static '02_2.png' %}" alt="Logo" class="w-11 h-11 text-white p-2 bg-white-500">
+
+        <span class="ml-0 text-2xl">THE DESIGN ASPECT</span>
+    </a>
+    
+  
+      <!-- Mobile menu button -->
+      <div class="md:hidden flex items-center">
+        <button id="menu-button" class="ml-2 hover:text-red-900 text-black text-lg">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 15 15" xmlns="http://www.w3.org/9000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+          </svg>
+        </button>
+      </div>
+  
+      <!-- Mobile navigation menu -->
+      <nav id="menu-mobile" class="fixed inset-0 bg-white border rounded-lg shadow-lg p-4 z-50 hidden custom-size mx-auto">
+        <button id="close-menu" class="absolute top-2 right-2 text-gray-600 hover:text-gray-900">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 15 15" xmlns="http://www.w3.org/9000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+        <ul class="flex flex-col mt-12">
+          <li><a href="{% url 'hub' %}" class="block py-1 px-4 text-black hover:text-red-700 text-base">INSPIRATION HUB</a></li>
+          <li><a href="{% url 'cal' %}" class="block py-2 px-4 text-black hover:text-red-900 text-base">BUDGET CALCULATOR</a></li>
+          <li><a href="{% url 'review' %}" class="block py-2 px-4 text-black hover:text-red-900 text-base">REVIEW</a></li>
+          <li><a href="#" class="block py-2 px-4 text-black hover:text-red-900 text-base">ABOUT US</a></li>
+        </ul>
+      </nav>
+
+  
+      <!-- Desktop navigation menu -->
+      <div class="hidden md:flex flex-col md:flex-row items-center space-x-5">
+        <a href="{% url 'hub' %}" class="hover:text-red-900 text-black text-xs  ">INSPIRATION HUB</a>
+        <a href="{% url 'cal' %}" class="hover:text-red-900 text-black text-xs">BUDGET CALCULATOR</a>
+        <a href="{% url 'review' %}" class="hover:text-red-900 text-black text-xs">REVIEW</a>
+        <a href="{% url 'aboutus' %}" class="hover:text-red-900 text-black text-xs">ABOUT US</a>
+      </div>
+  
+      <!-- Contact and social icons -->
+      <div class="flex items-center space-x-3 md:space-x-4 mt-4 md:mt-0">
+        <button class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-red-100 rounded text-xs mt-4 md:mt-0"><a href="{% url 'contact' %}">CONTACT US</a>
+          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+            <path d="M5 12h14M12 5l7 7-7 7"></path>
+          </svg>
+        </button>
+        <a href="https://wa.me/919970440113" class="whatsapp-link" target="_blank">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="w-6 h-6">
+        </a>
+        <a href="tel:+1234567890" class="call-link">
+          {% load static %}
+          <img src="{% static 'callicon.png' %}" alt="Call" class="w-6 h-6">
+        </a>
+      </div>
+    </div>
+  </header>
+  <section>
+  <!-- Mobile Layout (hidden on larger screens) -->
+<div class="container px-5 py-0 mx-auto flex flex-col md:hidden" id="mobile-contact-container">
+  <!-- Form Section (Appears First on Mobile) -->
+  <div class="lg:w-full md:w-1/2 bg-white flex flex-col w-full py-8">
+    <h2 class="text-gray-900 text-lg mb-4 font-medium title-font">CONTACT US</h2>
+    <form action="/contact/contact/" method="post">
+      {% csrf_token %}
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+        <div class="relative">
+          <label for="name" class="leading-7 text-xs text-gray-600">NAME</label>
+          <input type="text" id="name" name="name" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+        </div>
+        <div class="relative">
+          <label for="email" class="leading-7 text-xs text-gray-600">EMAIL</label>
+          <input type="email" id="email" name="email" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+        </div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+        <div class="relative">
+          <label for="phone" class="leading-7 text-xs text-gray-600">PHONE</label>
+          <input type="phone" id="phone" name="phone" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+        </div>
+        <div class="relative">
+          <label for="location" class="leading-7 text-xs text-gray-600">LOCATION</label>
+          <input type="location" id="location" name="location" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+        </div>
+      </div>
+      <div class="relative mb-4">
+        <label for="message" class="leading-7 text-xs text-gray-600">MESSAGE</label>
+        <textarea id="message" name="message" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
+      </div>
+      <button class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Submit</button>
+    </form>
+  </div>
+
+  <!-- Contact Information Section -->
+  <div class="lg:w-1/3 md:w-1/2 bg-white-300 rounded-lg overflow-hidden p-2 flex items-start justify-start relative mt-8 md:mt-0 md:ml-10">
+    <div class="bg-white relative flex flex-col py-6 rounded shadow-md">
+      <div class="px-6 mb-4">
+        <h2 class="title-font font-semibold text-gray-900 tracking-widest text-xs">PHONE</h2>
+        <p class="leading-relaxed">+91 9819651516</p>
+      </div>
+      <div class="px-6 mb-4">
+        <h2 class="title-font font-semibold text-gray-900 tracking-widest text-xs">EMAIL</h2>
+        <a class="text-indigo-500 leading-relaxed">info@thedesignaspect.com</a>
+      </div>
+      <div class="px-6">
+        <h2 class="title-font font-semibold text-gray-900 tracking-widest text-xs">ADDRESS</h2>
+        <p class="mt-1">09 - Mohanlal Mansion,</p>
+        <p class="mt-1">Opp. Maheshwaeri Garden,</p>
+        <p class="mt-1">Matunga - East</p>
+        <p class="mt-1">Mumbai - 400019</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Desktop Layout (hidden on smaller screens) -->
+<div class="container px-5 py-0 mx-auto hidden md:flex" id="desktop-contact-container">
+  <div class="lg:w-1/3 md:w-1/2 bg-white-300 rounded-lg overflow-hidden sm:mr-10 p-2 flex items-start justify-start relative">
+    <div class="bg-white relative flex flex-col py-6 rounded shadow-md">
+      <div class="px-6 mb-4">
+        <h2 class="title-font font-semibold text-gray-900 tracking-widest text-xs">PHONE</h2>
+        <p class="leading-relaxed">+91 9819651516</p>
+      </div>
+      <div class="px-6 mb-4">
+        <h2 class="title-font font-semibold text-gray-900 tracking-widest text-xs">EMAIL</h2>
+        <a class="text-indigo-500 leading-relaxed">info@thedesignaspect.com</a>
+      </div>
+      <div class="px-6">
+        <h2 class="title-font font-semibold text-gray-900 tracking-widest text-xs">ADDRESS</h2>
+        <p class="mt-1">09 - Mohanlal Mansion,</p>
+        <p class="mt-1"> Opp. Maheshwaeri Garden,</p>
+        <p class="mt-1">Matunga - East</p>
+        <p class="mt-1">Mumbai - 400019</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="lg:w-3/4 md:w-1/2 bg-white flex flex-col md:ml-auto w-full md:py-0 mt-8 md:mt-0">
+    <h2 class="text-gray-900 text-lg mb-0 font-medium title-font">CONTACT US</h2>
+    <form action="/contact/contact/" method="post">
+      {% csrf_token %}
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+        <div class="relative">
+          <label for="name" class="leading-7 text-xs text-gray-600">NAME</label>
+          <input type="text" id="name" name="name" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+        </div>
+        <div class="relative">
+          <label for="email" class="leading-7 text-xs text-gray-600">EMAIL</label>
+          <input type="email" id="email" name="email" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+        </div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+        <div class="relative">
+          <label for="phone" class="leading-7 text-xs text-gray-600">PHONE</label>
+          <input type="phone" id="phone" name="phone" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+        </div>
+        <div class="relative">
+          <label for="location" class="leading-7 text-xs text-gray-600">LOCATION</label>
+          <input type="location" id="location" name="location" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+        </div>
+      </div>
+      <div class="relative mb-4">
+        <label for="message" class="leading-7 text-xs text-gray-600">MESSAGE</label>
+        <textarea id="message" name="message" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
+      </div>
+      <button class="text-white bg-black border-0 py-2 px-6 focus:outline-none hover:bg-black rounded text-lg">Submit</button>
+    </form>
+  </div>
+</div>
+
+   <!-- Centered Square Map with Rounded Corners -->
+<div class="flex items-center justify-center min-h-screen bg-white-200">
+ 
+  <iframe width="95%" height="450" class="rounded-lg" frameborder="0" title="map" marginheight="0" marginwidth="0" scrolling="no" src="https://maps.google.com/maps?width=100%&height=800&hl=en&q=09%20-%20Mohanlal%20Mansion,%20Opp.%20Maheshwaeri%20Garden,%20Matunga%20-%20East,%20Mumbai%20400019&ie=UTF8&t=&z=12&iwloc=B&output=embed" style="filter: none;"></iframe>
+
+
+</div>
+<script>
+  // Function to toggle visibility based on screen size
+function toggleLayout() {
+  const mobileLayout = document.getElementById('mobile-contact-container');
+  const desktopLayout = document.getElementById('desktop-contact-container');
+
+  if (window.innerWidth >= 768) {
+    mobileLayout.classList.add('hidden');
+    desktopLayout.classList.remove('hidden');
+  } else {
+    mobileLayout.classList.remove('hidden');
+    desktopLayout.classList.add('hidden');
+  }
+}
+
+// Initial call to set the correct layout
+toggleLayout();
+
+// Listen for resize events to update the layout dynamically
+window.addEventListener('resize', toggleLayout);
+
+</script>
+
+
+</body>
+</html>

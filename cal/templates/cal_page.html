@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Increment and Decrement Numbers</title>
+<style>
+  /* Global Styles */
+body {
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Main Container */
+.main-container {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+}
+
+/* Scrollable Container Styles */
+/* Scrollable Container Styles */
+.scrollable-container {
+  max-height: 600px; /* Increased height */
+  overflow-y: auto;
+  width: 45%;
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+
+/* Form Styles */
+form {
+  text-align: center;
+}
+
+/* Radio Row Styles */
+.radio-row {
+  text-align: center;
+  border: 2px solid #981641;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+/* Label Styles */
+label {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.center-label {
+  font-size: 24px;
+  margin-top: 40px;
+}
+
+.paragraph {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+/* Button Styles */
+button {
+  font-size: 20px;
+  padding: 5px 10px;
+  cursor: pointer;
+  background-color: #981641;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #7b0f31;
+}
+
+/* Radio Container Styles */
+.radio-container {
+  margin-bottom: 30px;
+}
+
+/* Paragraph Styles */
+p {
+  margin-bottom: 15px;
+  color: #666666;
+}
+
+/* Image Styles */
+img {
+  max-width: 40%;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Radio Input Styles */
+input[type="radio"] {
+  display: none;
+}
+
+input[type="radio"] + label {
+  cursor: pointer;
+  padding: 10px 20px;
+  border: 2px solid #cccccc;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+input[type="radio"]:checked + label {
+  background-color: #c73850;
+  color: #ffffff;
+  border-color: #a91b51;
+}
+
+.hubbutton {
+    background-color: #fff;
+    color: #ff0000;
+    border: 2px solid #ff0000;
+    padding: 12px 24px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 0px 4px 6px rgba(212, 124, 124, 0.1);
+    margin-top: 20px;
+}
+  
+.hubbutton:hover {
+  background-color: #ba8686;
+}
+</style>
+</head>
+<body>
+  <div class="main-container">
+    <div class="scrollable-container">
+      <form>
+        <div class="center-label">
+            <label>Please select the rooms.</label>
+        </div>
+        <div class="paragraph">
+            <p>Please choose the appropriate option:</p>
+        </div>
+        <div class="radio-row">
+          <span>Living Room&nbsp;&nbsp;&nbsp;</span>
+          <button type="button" onclick="increment('value1')">+</button>
+          <span id="value1">0</span>
+          <button type="button" onclick="decrement('value1')">-</button>
+          <input type="number" id="area1" min="0">
+          <label for="area1">Area (sq ft)</label>
+        </div>
+      
+        <div class="radio-row">
+          <span>Kitchen&nbsp;&nbsp;&nbsp;</span>
+          <button type="button" onclick="increment('value2')">+</button>
+          <span id="value2">0</span>
+          <button type="button" onclick="decrement('value2')">-</button>
+          <input type="number" id="area2" min="0">
+          <label for="area2">Area (sq ft)</label>
+        </div>
+      
+        <div class="radio-row">
+          <span>Bedroom&nbsp;&nbsp;&nbsp;</span>
+          <button type="button" onclick="increment('value3')">+</button>
+          <span id="value3">0</span>
+          <button type="button" onclick="decrement('value3')">-</button>
+          <input type="number" id="area3" min="0">
+          <label for="area3">Area (sq ft)</label>
+        </div>
+      
+        <div class="radio-row">
+          <span>Bathroom&nbsp;&nbsp;&nbsp;</span>
+          <button type="button" onclick="increment('value4')">+</button>
+          <span id="value4">0</span>
+          <button type="button" onclick="decrement('value4')">-</button>
+          <input type="number" id="area4" min="0">
+          <label for="area4">Area (sq ft)</label>
+        </div>
+      </form>
+    </div>
+    
+    <div class="scrollable-container">
+      <form>
+        <div class="center-label">
+            <label>Please select your package</label>
+        </div>
+        <div class="paragraph">
+            <p>Please choose the appropriate option:</p>
+        </div>
+        {% load static %}
+        <div class="radio-container">
+          <input type="radio" id="option1" name="option" value="option1">
+          <label for="option1">Essential</label>
+          <p>A functional and budget-friendly space designed for practical living.</p>
+          <img src="{% static 'ess.jpg' %}" alt="Image for Option 1">
+        </div>
+    
+        <div class="radio-container">
+          <input type="radio" id="option2" name="option" value="option2">
+          <label for="option2">Premium</label>
+          <p>A sophisticated and tailored environment featuring high-quality finishes and personalized touches.</p>
+          <img src="{% static 'pre.webp' %}" alt="Image for Option 2">
+        </div>
+    
+        <div class="radio-container">
+          <input type="radio" id="option3" name="option" value="option3">
+          <label for="option3">Luxury</label>
+          <p>An exclusive retreat featuring unique elements and luxurious amenities.</p>
+          <img src="{% static 'luxury.jpg' %}" alt="Image for Option 3">
+        </div>
+    
+        <button type="button" class="hubbutton" onclick="redirectToNextPage()">Go to Next Page</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const packageCosts = {
+      option1: 1500,
+      option2: 3000,
+      option3: 5000,
+    };
+    // Function to increment value
+    function increment(id) {
+      var element = document.getElementById(id);
+      var value = parseInt(element.innerHTML);
+      if (value < 10) {
+        value++;
+        element.innerHTML = value;
+      }
+    }
+
+    // Function to decrement value
+    function decrement(id) {
+      var element = document.getElementById(id);
+      var value = parseInt(element.innerHTML);
+      if (value > 0) {
+        value--;
+        element.innerHTML = value;
+      }
+    }
+
+    // Function to redirect to next page
+    function redirectToNextPage() {
+      // Store selected values in sessionStorage
+      sessionStorage.setItem('livingRoom', document.getElementById('value1').innerHTML);
+      sessionStorage.setItem('kitchen', document.getElementById('value2').innerHTML);
+      sessionStorage.setItem('bedroom', document.getElementById('value3').innerHTML);
+      sessionStorage.setItem('bathroom', document.getElementById('value4').innerHTML);
+
+      // Get room area values
+      const livingRoomArea = document.getElementById('area1').value || 0;
+      const kitchenArea = document.getElementById('area2').value || 0;
+      const bedroomArea = document.getElementById('area3').value || 0;
+      const bathroomArea = document.getElementById('area4').value || 0;
+
+      // Get the selected option
+      var selectedOption = document.querySelector('input[name="option"]:checked');
+
+      // If no option is selected, display an alert message
+      if (!selectedOption) {
+        alert('Please select an option.');
+        return;
+      }
+
+      // Store the selected value in sessionStorage
+      sessionStorage.setItem('selectedOption', selectedOption.value);
+
+      // Calculate the total cost
+      const cost = packageCosts[selectedOption.value] * (
+        (parseInt(sessionStorage.getItem('livingRoom')) * livingRoomArea) +
+        (parseInt(sessionStorage.getItem('kitchen')) * kitchenArea) +
+        (parseInt(sessionStorage.getItem('bedroom')) * bedroomArea) +
+        (parseInt(sessionStorage.getItem('bathroom')) * bathroomArea)
+      );
+
+      // Store the total cost in sessionStorage
+      sessionStorage.setItem('totalCost', cost);
+
+      // Redirect to the next page
+      window.location.href = "{% url 'cal_final' %}";
+    }
+  </script>
+</body>
+</html>
